@@ -1,23 +1,196 @@
-import React, {Component} from 'react';
-import{
-    BrowserRouter,
+import React, { Component } from 'react';
+import Background from './bg.png';
+import Foto from "./storage/Bali1.png";
+//import { Button } from "./components";
+import {
+    BrowserRouter as Router,
+    Switch,
     Route,
-    Switch
-} from "react-router-dom"
-import Landing from "./landing";
+    Link
+} from "react-router-dom";
+class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            matches: window.matchMedia("(min-width: 648px)").matches,
 
-class App extends Component{
-    render(){
-        return(
-            <BrowserRouter>
-            <Switch>
-                <Landing></Landing>
-            </Switch>
-            </BrowserRouter>
-        )
+        };
+    }
+
+
+    render() {
+        const { matches } = this.state
+        return (
+            <Router>
+                <div style={styles.background}>
+                    <div style={styles.overlay}>
+
+
+                        <Switch>
+
+                            <Route path="/">
+                                <div style={styles.container}>
+                                    <div>
+                                        <center>  <img src={Foto} alt="" style={{ height: 168, width: 150 }} /></center>
+                                    </div>
+                                    <div style={matches ? styles.h1 : styles.h2}>
+                                        A Better way to <div style={styles.travel}>travel  to bali</div>
+                                    </div>
+                                    <div style={styles.subTittle}>
+                                        CheaPest and Easyer
+                                    </div>
+                                    <div style={styles.wrapperInput}>
+
+                                        <button style={styles.button1} >Read more</button>
+                                        <button style={styles.button} >Reservation</button>
+                                    </div>
+
+
+                                </div>
+
+                            </Route>
+                        </Switch>
+                    </div>
+                </div>
+            </Router>
+
+        );
     }
 }
 
+let w = window.innerWidth;
+let h = window.innerHeight;
+const styles = {
+    background: {
+        display: 'flex',
+        backgroundImage: `url(${Background})`,
+        /*full height*/
+        height: '100%',
+        backgoundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    },
+    overlay: {
+        backgroundColor: "rgba(81, 77, 67, 0.7)",
+        height: h,
+        width: '100%'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+
+    },
+    topText: {
+        alignSelf: 'center',
+        marginTop: 50,
+        borderStyle: 'solid',
+        borderWidth: 5,
+        maxWidth: 50,
+        color: '#fff',
+        justifyContent: 'center',
+        padding: 10,
+        fontWeight: 'bold'
+    },
+    h1: {
+        alignSelf: 'center',
+        marginTop: 50,
+        color: 'white',
+        fontSize: 40,
+        textAlign: 'center',
+        maxWidth: 300,
+        fontFamily: 'pacifico',
+
+        color: '#FFFFFF'
+
+    },
+    h2: {
+        alignSelf: 'center',
+        marginTop: 50,
+        color: 'white',
+        fontSize: 36,
+
+        textAlign: 'center'
+    },
+    wrapperInput: {
+        display: 'flex',
+        alignSelf: 'center',
+        marginTop: 60
+    },
+    subTittle:{
+        color: 'white',
+        textAlign: 'center',
+        fontFamily: "Roboto",
+        marginTop: 20
+    },
+
+    bgInput: {
+        display: 'flex',
+        backgroundColor: '#fff',
+        borderRadius: 40,
+        marginRight: 16
+    },
+    input: {
+        position: 'absolute',
+        width: '150px',
+        height: '40px',
+        left: '400px',
+        top: '481px',
+        fontFamily: 'pacifico',
+        background: "rgba(22, 20, 50, 0.80)",
+    },
+    input2: {
+        borderRadius: 30,
+        padding: 10,
+        borderStyle: 'none',
+        fontSize: 14,
+        position: 'absolute',
+        width: '1280px',
+        height: '720px',
+        left: '0px',
+        top: '0px',
+    },
+    button: {
+        width: '156px',
+        height: '46px',
+        left: '646px',
+        top: '481px',
+        fontFamily: 'pacifico',
+        background: 'orange',
+        marginLeft: 10,
+        paddingLeft: 40,
+        paddingRight: 40
+    },
+    button1: {
+        width: '156px',
+        height: '46px',
+        left: '450px',
+        top: '481px',
+        fontFamily: 'pacifico',
+        backgroundColor: 'transparent',
+        borderColor: 'orange',
+        marginLeft: 10,
+        paddingLeft: 40,
+        paddingRight: 40
+    },
+    textScroll: {
+        color: '#fff', maxWidth: 200, textAlign: 'center'
+    },
+    icon: {
+        alignSelf: 'center'
+    },
+    travel: {
+        color: '#FCB371'
+    },
+    section: {
+        margin: 8,
+        padding: 8,
+        borderStyle: 'groove',
+        borderWidth: 1,
+        color: '#000'
+    },
+    Link: {
+        textDecoration: 'none'
+    },
+};
+
 export default App;
-
-
